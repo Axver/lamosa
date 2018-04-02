@@ -459,15 +459,20 @@ function manualLokasi()
 function lokasiSampah()
 {
   // Sip yg ini sduah jalan
-  console.log(argeojson[0]['latitude']);
-  console.log(argeojson[0]['longitude']);
+  // console.log(argeojson[0]['latitude']);
+  // console.log(argeojson[0]['longitude']);
+  console.log(argeojson[0]['name']);
   console.log(argeojson.length);
-
+  var marker=[];
+  var name=[];
   length= argeojson.length;
   j=0;
   while(j<length)
   {
-    var marker = L.marker([argeojson[j]['latitude'], argeojson[j]['longitude']]).addTo(mymap);
+    name[j]=argeojson[j]['name'];
+    marker[j] = L.marker([argeojson[j]['latitude'], argeojson[j]['longitude']]).addTo(mymap);
+    marker[j].bindPopup("<h4><b>Lokasi Titik Sampah</b></h4>" + "<img style='width:300px; height:200px;' src='upload/files/"+name[j]+"'>"+"<br/><button class='btn btn-warning'>Selesai</button>");
+
     j++;
   }
 
