@@ -465,13 +465,16 @@ function lokasiSampah()
   console.log(argeojson.length);
   var marker=[];
   var name=[];
+  var id=[];
   length= argeojson.length;
   j=0;
+  var test=1;
   while(j<length)
   {
+    id[j]=argeojson[j]['id_upload'];
     name[j]=argeojson[j]['name'];
     marker[j] = L.marker([argeojson[j]['latitude'], argeojson[j]['longitude']]).addTo(mymap);
-    marker[j].bindPopup("<h4><b>Lokasi Titik Sampah</b></h4>" + "<img style='width:300px; height:200px;' src='upload/files/"+name[j]+"'>"+"<br/><button class='btn btn-warning'>Selesai</button>");
+    marker[j].bindPopup("<h4><b>Lokasi Titik Sampah</b></h4>" + "<img style='width:300px; height:200px;' src='upload/files/"+name[j]+"'>"+"<button class='btn btn-warning' onclick='test("+ id[j] +")'> Selesai </button>");
 
     j++;
   }
@@ -528,6 +531,11 @@ function tandaiSelesai()
   }
 });
 
+}
+
+function test(a)
+{
+  alert(a);
 }
 
 
